@@ -1,0 +1,29 @@
+PROBLEM LINK: https://leetcode.com/problems/valid-parentheses/
+
+
+SOLUTION:
+
+bool isValid(string s) {
+        stack<char> balPar;
+        
+        balPar.push(s[0]);  
+        
+        for(int i=1; i<s.size(); i++){
+            if(balPar.size()==0) balPar.push(s[i]);
+            else if(balPar.top() == '(' & s[i] == ')') balPar.pop();
+            else if(balPar.top() == '{' & s[i] == '}') balPar.pop();
+            else if(balPar.top() == '[' & s[i] == ']') balPar.pop();
+            else{
+                balPar.push(s[i]);
+            }
+        }
+        
+        if(balPar.size() == 0) return true;
+        else return false;
+    }
+    
+    
+    
+    
+    
+    
